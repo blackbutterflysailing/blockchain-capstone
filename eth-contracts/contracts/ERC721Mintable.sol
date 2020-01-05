@@ -75,6 +75,14 @@ contract Ownable {
 
 contract Pausable is Ownable {
 
+    bool private _paused;
+
+    function pause(bool pauseIt)
+        public
+        onlyOwner
+    {
+        _paused = pauseIt;
+    }
 }
 
 contract ERC165 {

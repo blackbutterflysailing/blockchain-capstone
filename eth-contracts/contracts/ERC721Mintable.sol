@@ -148,7 +148,7 @@ contract ERC165 {
      * @dev internal method for registering an interface
      */
     function _registerInterface(bytes4 interfaceId) internal {
-        require(interfaceId != 0xffffffff);
+        require(interfaceId != 0xffffffff, "Invalid interface id");
         _supportedInterfaces[interfaceId] = true;
     }
 }

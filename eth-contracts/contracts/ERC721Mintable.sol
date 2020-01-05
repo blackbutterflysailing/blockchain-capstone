@@ -306,6 +306,9 @@ contract ERC721 is Pausable, ERC165 {
         // Mint tokenId to given address
         _tokenOwner[tokenId] = to;
 
+        // Increase token counter of owner
+        _ownedTokensCount[to].increment();
+
         // TODO emit Transfer event
     }
 

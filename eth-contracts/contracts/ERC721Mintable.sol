@@ -19,7 +19,7 @@ contract Ownable {
         return _owner;
     }
 
-    //  2) create an internal constructor that sets the _owner var to the creater of the contract
+    //  2) create an internal constructor that sets the _owner var to the creator of the contract
 
     constructor()
         internal

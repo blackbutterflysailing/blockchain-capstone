@@ -77,6 +77,12 @@ contract Pausable is Ownable {
 
     bool private _paused;
 
+    constructor()
+        internal
+    {
+        _paused = false;
+    }
+
     function pause(bool pauseIt)
         public
         onlyOwner

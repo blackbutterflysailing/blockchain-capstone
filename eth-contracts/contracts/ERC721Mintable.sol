@@ -608,7 +608,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
         // see https://github.com/oraclize/ethereum-api/blob/master/oraclizeAPI_0.5.sol for strConcat()
     // require the token exists before setting
 
-    function setTokenURI(uint tokenId)
+    function setTokenURI(uint256 tokenId)
         internal
     {
         require(_exists(tokenId), "tokenId does not exist");
@@ -628,7 +628,15 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 
 contract RealEstateToken is ERC721Metadata("Capstone Real Estate","CRE","https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/")
 {
-
+    function mint(address to, uint256 tokenID)
+        public
+        onlyOwner
+        returns (bool)
+    {
+        super._mint(to, tokenId);
+        super._setTokenURI(tokenId);
+        return true;
+    }
 }
 
 

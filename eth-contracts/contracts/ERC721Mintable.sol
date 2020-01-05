@@ -339,6 +339,7 @@ contract ERC721 is Pausable, ERC165 {
 
 
         // TODO: emit correct event
+        emit Transfer(from, to, tokenId);
     }
 
     /**

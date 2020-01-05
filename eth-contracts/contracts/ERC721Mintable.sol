@@ -15,6 +15,11 @@ contract Ownable {
     // AddressChecksumUtils contract
     AddressChecksumUtils addressChecksumUtils;
 
+    /********************************************************************************************/
+    /*                                       EVENT DEFINITIONS                                  */
+    /********************************************************************************************/
+    event OwnershipTransferred(address newOwner);
+
     function getOwner()
         public
         view
@@ -29,6 +34,7 @@ contract Ownable {
         internal
     {
         _owner = msg.sender;
+        emit OwnershipTransferred(_owner);
     }
 
     //  3) create an 'onlyOwner' modifier that throws if called by any account other than the owner.
@@ -44,7 +50,10 @@ contract Ownable {
     //  4) fill out the transferOwnership function
     //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
 
-    function transferOwnership(address newOwner) public onlyOwner {
+    function transferOwnership(address newOwner)
+        public
+        onlyOwner
+    {
         // TODO add functionality to transfer control of the contract to a newOwner.
 
         // Convert the account into a checksummed string
@@ -53,6 +62,7 @@ contract Ownable {
         // make sure the new owner is a real address
         require(addressChecksumUtils.isChecksumValid(accountChecksum) == true, "Address is not valid");
         _owner = newOwner;
+        emit OwnershipTransferred(_owner);
     }
 }
 

@@ -62,7 +62,7 @@ contract Ownable {
         string calldata accountChecksum = addressChecksumUtils.getChecksum(newOwner);
 
         // make sure the new owner is a real address
-        require(addressChecksumUtils.isChecksumValid(accountChecksum) == true, "Address is not valid");
+        require(addressChecksumUtils.isChecksumValid(accountChecksum), "Address is not valid");
         _owner = newOwner;
         emit OwnershipTransferred(_owner);
     }
@@ -293,7 +293,12 @@ contract ERC721 is Pausable, ERC165 {
     function _mint(address to, uint256 tokenId) internal {
 
         // TODO revert if given tokenId already exists or given address is invalid
-  
+        // Convert the account into a checksummed string
+        string calldata accountChecksum = addressChecksumUtils.getChecksum(to);
+
+        // make sure the new owner is a real address
+        require(addressChecksumUtils.isChecksumValid(accountChecksum), "Address is not valid");
+
         // TODO mint tokenId to given address & increase token count of owner
 
         // TODO emit Transfer event

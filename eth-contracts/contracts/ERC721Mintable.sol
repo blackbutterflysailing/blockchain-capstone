@@ -334,6 +334,10 @@ contract ERC721 is Pausable, ERC165 {
         // Update token count to decrement count on from address
         _ownedTokensCount[from].decrement();
 
+        // Update token count to increment count on to address
+        _ownedTokensCount[to].increment();
+
+
         // TODO: emit correct event
     }
 

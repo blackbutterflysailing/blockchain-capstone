@@ -206,6 +206,11 @@ contract ERC721 is Pausable, ERC165 {
     function approve(address to, uint256 tokenId) public {
         
         // TODO require the given address to not be the owner of the tokenId
+        // 1) Find the owner of the tokenId
+        address tokenOwnerAddress = ownerOf(tokenId);
+
+        // 2) Require the given address to not be the owner of the tokenId
+        require(to != tokenOwnerAddress, "Given address is equal to the tokenId owner");
 
         // TODO require the msg sender to be the owner of the contract or isApprovedForAll() to be true
 

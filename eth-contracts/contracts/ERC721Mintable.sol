@@ -20,6 +20,7 @@ contract Ownable {
     /********************************************************************************************/
     event OwnershipTransferred(address newOwner);
     event Paused(address fromAddress);
+    event Unpaused(address fromAddress);
 
     function getOwner()
         public

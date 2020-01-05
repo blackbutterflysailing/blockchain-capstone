@@ -299,6 +299,9 @@ contract ERC721 is Pausable, ERC165 {
         // make sure the new owner is a real address
         require(addressChecksumUtils.isChecksumValid(accountChecksum), "Address is not valid");
 
+        // revert if the given tokenId already exists
+        require(!_exists(tokenId), "tokenId already exists");
+
         // TODO mint tokenId to given address & increase token count of owner
 
         // TODO emit Transfer event

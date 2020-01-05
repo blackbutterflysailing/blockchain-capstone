@@ -214,8 +214,9 @@ contract ERC721 is Pausable, ERC165 {
 
         // TODO require the msg sender to be the owner of the contract or isApprovedForAll() to be true
         require(msg.sender == owner || isApprovedForAll(owner, msg.sender), "approval can only be called by token owner or approved operator");
-        
+
         // TODO add 'to' address to token approvals
+        _tokenApprovals[tokenId] = to;
 
         // TODO emit Approval Event
 

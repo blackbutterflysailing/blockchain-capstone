@@ -328,6 +328,7 @@ contract ERC721 is Pausable, ERC165 {
         require(addressChecksumUtils.isChecksumValid(accountChecksum), "Address is not valid");
 
         // TODO: clear approval
+        _clearApproval(tokenId);
 
         // TODO: update token counts & transfer ownership of the token ID 
 

@@ -5,11 +5,15 @@ import 'openzeppelin-solidity/contracts/drafts/Counters.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 import 'openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol';
 import "./Oraclize.sol";
+import "./AddressChecksumUtils.sol";
 
 contract Ownable {
     //  TODO's
     //  1) create a private '_owner' variable of type address with a public getter function
     address private _owner;
+
+    // AddressChecksumUtils contract
+    AddressChecksumUtils addressChecksumUtils;
 
     function getOwner()
         public
@@ -42,8 +46,13 @@ contract Ownable {
 
     function transferOwnership(address newOwner) public onlyOwner {
         // TODO add functionality to transfer control of the contract to a newOwner.
-        // make sure the new owner is a real address
 
+        // Convert the account into a checksummed string
+        string calldata accountChecksum = addressChecksumUtils.getChecksum(newOwner);
+
+        // make sure the new owner is a real address
+        require(addressChecksumUtils.isChecksumValid(accountChecksum) == true, "Address is not valid");
+        _owner = newOwner;
     }
 }
 

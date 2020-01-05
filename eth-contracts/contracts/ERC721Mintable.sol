@@ -83,6 +83,15 @@ contract Pausable is Ownable {
         _paused = false;
     }
 
+   /**
+    * @dev Modifier that requires the contract to not be paused
+    */
+    modifier whenNotPaused()
+    {
+        require(!_paused, "Contract is paused");
+        _;
+    }
+
     function pause(bool pauseIt)
         public
         onlyOwner

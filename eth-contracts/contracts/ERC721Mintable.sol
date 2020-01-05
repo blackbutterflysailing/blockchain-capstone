@@ -321,7 +321,12 @@ contract ERC721 is Pausable, ERC165 {
         require(ownerOf[tokenId] == from, "from address is not owner of given token");
 
         // TODO: require token is being transfered to valid address
-        
+        // Convert the account into a checksummed string
+        string calldata accountChecksum = addressChecksumUtils.getChecksum(to);
+
+        // make sure the new owner is a real address
+        require(addressChecksumUtils.isChecksumValid(accountChecksum), "Address is not valid");
+
         // TODO: clear approval
 
         // TODO: update token counts & transfer ownership of the token ID 

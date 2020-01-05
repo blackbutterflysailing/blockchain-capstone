@@ -579,6 +579,14 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
         return _name;
     }
 
+    function getSymbol()
+        external
+        view
+        returns (string memory)
+    {
+        return _symbol;
+    }
+
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId), "Token does not exist");
         return _tokenURIs[tokenId];

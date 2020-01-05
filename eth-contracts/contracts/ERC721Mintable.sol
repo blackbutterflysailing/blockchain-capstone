@@ -19,7 +19,14 @@ contract Ownable {
         return _owner;
     }
 
-    //  2) create an internal constructor that sets the _owner var to the creater of the contract 
+    //  2) create an internal constructor that sets the _owner var to the creater of the contract
+
+    constructor()
+        internal
+    {
+        _owner = msg.sender;
+    }
+
     //  3) create an 'onlyOwner' modifier that throws if called by any account other than the owner.
     //  4) fill out the transferOwnership function
     //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)

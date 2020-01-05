@@ -262,7 +262,8 @@ contract ERC721 is Pausable, ERC165 {
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public {
         transferFrom(from, to, tokenId);
-        require(_checkOnERC721Received(from, to, tokenId, _data));
+        require(_checkOnERC721Received(from, to, tokenId, _data),
+            "Either target address not a contract or magic value not returned");
     }
 
     /**

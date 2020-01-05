@@ -303,6 +303,8 @@ contract ERC721 is Pausable, ERC165 {
         require(!_exists(tokenId), "tokenId already exists");
 
         // TODO mint tokenId to given address & increase token count of owner
+        // Mint tokenId to given address
+        _tokenOwner[tokenId] = to;
 
         // TODO emit Transfer event
     }

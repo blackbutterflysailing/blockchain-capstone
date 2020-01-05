@@ -108,6 +108,12 @@ contract Pausable is Ownable {
         onlyOwner
     {
         _paused = pauseIt;
+
+        if (pauseIt) {
+            emit Paused(msg.sender);
+        } else {
+            emit Unpaused(msg.sender);
+        }
     }
 }
 

@@ -24,7 +24,8 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should get token balance', async function () { 
-            
+            let tokenBalance = await this.contract.balanceOf.call(account_two, {from: account_one});
+            assert.equal(tokenBalance.toNumber(), 1, "account_two token balance should be 1");
         })
 
         // token uri should be complete i.e: https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1

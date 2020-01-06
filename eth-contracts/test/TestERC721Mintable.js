@@ -38,6 +38,11 @@ contract('TestERC721Mintable', accounts => {
             let tokenId = 2;
             await this.contract.approve.call(account_four, tokenId, {from: account_three});
             await this.contract.transferFrom.call(account_three, account_four, tokenId, {from: account_three});
+
+            // Verify token transfer
+            newOwner = await this.contract.ownerOf.call(tokenId);
+            assert.equal(newOwner, account_three, "The new ownere of the tokenId 2 should be account_three");
+
         })
     });
 

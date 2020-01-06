@@ -35,7 +35,9 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should transfer token from one owner to another', async function () { 
-            
+            let tokenId = 2;
+            await this.contract.approve.call(account_four, tokenId, {from: account_three});
+            await this.contract.transferFrom.call(account_three, account_four, tokenId, {from: account_three});
         })
     });
 

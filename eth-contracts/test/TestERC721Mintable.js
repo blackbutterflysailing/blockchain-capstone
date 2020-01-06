@@ -4,6 +4,9 @@ contract('TestERC721Mintable', accounts => {
 
     const account_one = accounts[0];
     const account_two = accounts[1];
+    const account_three = accounts[2];
+    const account_four = accounts[3];
+    const account_five = accounts[4];
 
     describe('match erc721 spec', function () {
         beforeEach(async function () { 
